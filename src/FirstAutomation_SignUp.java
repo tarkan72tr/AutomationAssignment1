@@ -40,16 +40,5 @@ public class FirstAutomation_SignUp {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
 
-
-
-
-
-
-
-
-
-
-
-
     }
 }

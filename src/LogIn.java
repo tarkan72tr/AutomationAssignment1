@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class LogIn {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\SeleniumDocuments\\BrowserDriver\\chromedriver.exe");
         WebDriver driver =  new ChromeDriver();
 
@@ -28,11 +28,11 @@ public class LogIn {
         driver.findElement(By.id("loginUsername")).sendKeys("Hasan.Ata");
         driver.findElement(By.id("loginPassword")).sendKeys("13795Aa");
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
+
 
         driver.findElement(By.name("loginButton")).click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
+
 
         String expectedUrl = "http://qa-duotify.us-east-2.elasticbeanstalk.com/browse.php?";
         String currentUrl = driver.getCurrentUrl();
@@ -49,25 +49,24 @@ public class LogIn {
 
 
         driver.findElement(By.id("rafael")).click();
+        Thread.sleep(5000);
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
 
         expectedUrl = "http://qa-duotify.us-east-2.elasticbeanstalk.com/register.php";
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
+        Thread.sleep(2000);
 
         currentUrl = driver.getCurrentUrl();
+        Thread.sleep(2000);
         Assert.assertEquals(currentUrl, expectedUrl);
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
 
         driver.findElement(By.id("loginUsername")).sendKeys("Hasan.Ata");
         driver.findElement(By.id("loginPassword")).sendKeys("13795Aa");
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
-
         driver.findElement(By.name("loginButton")).click();
+        Thread.sleep(2000);
 
         String pageSource = driver.getPageSource();
+        Thread.sleep(2000);
         String expectedText = "You Might Also Like";
 
         Assert.assertTrue(pageSource.contains(expectedText));
